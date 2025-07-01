@@ -10,7 +10,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
     const navigate = useNavigate()
     return (
         <>
-            <button onClick={() => navigate(`/${film.name}`)}>Подробнее</button>
+            <button onClick={() => navigate(`/cinema/${film.name}`)}>Подробнее</button>
         </>
     )
 }
