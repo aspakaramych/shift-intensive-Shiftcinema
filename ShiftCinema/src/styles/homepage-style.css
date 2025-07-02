@@ -1,0 +1,10 @@
+.class-card-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 100px 40px 40px 40px;
+    align-items: flex-start;
+    box-sizing: border-box;
+
+}
