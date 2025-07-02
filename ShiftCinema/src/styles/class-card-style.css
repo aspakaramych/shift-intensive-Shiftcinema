@@ -11,6 +11,8 @@
     margin: 20px;
     text-align: left;
     padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .image-container  {

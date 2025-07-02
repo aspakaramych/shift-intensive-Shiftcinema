@@ -20,16 +20,18 @@ const HomePage = () => {
     return (
         <>
             <Header/>
-            <div className={"class-card-list"}>
+            <div>
                 <p>Афиша</p>
-                <div>
+            </div>
+            <div className={"class-card-list"}>
+
                     {films.length > 0 ? (
                         films.map((film: Film) => (
                             <FilmCard key={film.id} film={film}/>
                         ))) : (
                         <p>Нет фильмов</p>
                     )}
-                </div>
+
             </div>
 
         </>
