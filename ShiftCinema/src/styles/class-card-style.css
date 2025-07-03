@@ -1,0 +1,69 @@
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('../fonts/FiraSans-Medium.ttf') format('truetype');
+}
+
+.class-card {
+    font-family: "Fira Sans", sans-serif;
+    border-radius: 12px;
+    width: 300px;
+    overflow: hidden;
+    margin: 20px;
+    text-align: left;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-container  {
+    position: relative;
+    width: 100%;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.image-container div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.image-container div p {
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.film-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 20px 5px 20px;
+}
+
+.film-type {
+    font-size: 16px;
+    margin: 0 20px 10px 20px;
+}
+
+.detail-button {
+    border: none;
+    border-radius: 18px;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    width: calc(100% - 40px);
+    margin: 0 20px;
+}
