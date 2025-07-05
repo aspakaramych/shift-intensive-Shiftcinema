@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
-import {fetchFilms, type Film} from "../api/filmsApi.ts";
+import {fetchFilms} from "../api/filmsApi.ts";
 import Header from "../components/Header.tsx";
 import FilmCard from "../components/FilmCard.tsx";
 import "../styles/homepage-style.css"
+import type {Film} from "../data/filmResponse.ts";
+import {toast} from "react-toastify";
 
 const HomePage = () => {
     const [films, setFilms] = useState<Film[]>([])
@@ -12,15 +14,19 @@ const HomePage = () => {
     }, [])
 
     const handleFetchFilms = async (): Promise<void> => {
-        const response = await fetchFilms()
-        setFilms(response)
-        console.log(films)
+        try {
+            const response = await fetchFilms()
+            setFilms(response)
+            console.log(films)
+        } catch (error) {
+            toast.error("Ошибка загрузки фильмов")
+        }
     }
 
     return (
         <>
             <Header/>
-            <div>
+            <div className={"poster-container"}>
                 <p>Афиша</p>
             </div>
             <div className={"class-card-list"}>
