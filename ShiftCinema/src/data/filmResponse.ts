@@ -27,7 +27,7 @@ export interface Film {
     runtime: number
     ageRating: string
     genres: string[]
-    userRating: Rating
+    userRatings: Rating
     img: string
     country: Country
 }
