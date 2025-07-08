@@ -8,7 +8,7 @@ interface Hall {
     places: Ticket[]
 }
 
-interface Seance {
+export interface Seance {
     time: string
     hall: Hall
 }
@@ -22,5 +22,5 @@ export interface FilmSchedule {
 export interface ScheduleResponse {
     success: string
     reason: string
-    schedules: FilmSchedule
+    schedules: FilmSchedule[]
 }

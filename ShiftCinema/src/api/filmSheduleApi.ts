@@ -5,7 +5,7 @@ const filmScheduleApi = axios.create({
     baseURL: "https://shift-intensive.ru/api/cinema/film"
 })
 
-export const fetchFilmSchedule =  async (id: string) : Promise<FilmSchedule> => {
+export const fetchFilmSchedule =  async (id: string) : Promise<FilmSchedule[]> => {
     try {
         const response = await filmScheduleApi.get<ScheduleResponse>(`/${id}/schedule`)
         console.log(response.data)
