@@ -1,0 +1,38 @@
+.day-tabs {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 40px;
+    margin-bottom: 30px;
+}
+
+.day-tab {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    padding: 10px 18px;
+    border: 1px solid gray;
+    border-radius: 8px;
+    background-color: #344051;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.day-tab:hover:not(.active) {
+    background-color: gray;
+    border-color: white;
+    color: white;
+}
+
+.day-tab.active {
+    background-color: #141c24;
+    color: white;
+    border-color: #141c24;
+    box-shadow: 0 2px 8px #141c24;
+    font-weight: 600;
+}

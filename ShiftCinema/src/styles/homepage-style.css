@@ -13,9 +13,14 @@ body {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 24px;
     padding: 100px 40px 40px 40px;
     box-sizing: border-box;
+}
 
+.poster-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

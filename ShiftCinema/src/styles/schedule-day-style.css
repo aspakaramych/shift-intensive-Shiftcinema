@@ -1,0 +1,48 @@
+.schedule-section {
+    padding: 0 40px;
+}
+
+.hall-section {
+    margin-bottom: 30px;
+}
+
+.hall-section h4 {
+    font-size: 18px;
+    color: darkgray;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.time-slots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.time-slot-button {
+    background-color: #141c24;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-size: 16px;
+    cursor: pointer;
+    color: darkgray;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    min-width: 90px;
+    text-align: center;
+}
+
+.time-slot-button:hover:not(.selected) {
+    background-color: gray;
+    border-color: white;
+    color: white;
+}
+
+.time-slot-button.selected {
+    background-color: #97a1af;
+    color: white;
+    border-color: #97a1af;
+    box-shadow: 0 2px 8px #97a1af;
+    font-weight: 600;
+}
