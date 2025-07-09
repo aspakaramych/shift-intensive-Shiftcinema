@@ -1,5 +1,6 @@
 import Header from "../components/Header.tsx";
 import {useNavigate, useParams} from "react-router";
+import * as React from "react";
 import {useEffect, useState} from "react";
 import type {Film} from "../data/filmResponse.ts";
 import {fetchFilmDetail} from "../api/filmDetailApi.ts";
@@ -13,7 +14,7 @@ import ArrowBack from "../assets/arrow_back.svg?react"
 import DaySelector from "../components/DaySelector.tsx";
 import FilmScheduleDay from "../components/FilmScheduleDay.tsx";
 import {renderStars} from "../utils/renderStars.tsx";
-import * as React from "react";
+import {HOMEPAGE_PATH} from "../utils/routes.ts";
 
 interface DayDisplayInfo extends FilmSchedule {
     dayLabel: string
@@ -45,7 +46,7 @@ const getDayLabel = (dateString: string): string => {
         return dateString;
     }
 
-    const options: Intl.DateTimeFormatOptions = { weekday: 'short', day: 'numeric', month: 'short' };
+    const options: Intl.DateTimeFormatOptions = {weekday: 'short', day: 'numeric', month: 'short'};
     const formatted = new Intl.DateTimeFormat('ru-RU', options).format(date);
     return formatted.charAt(0).toUpperCase() + formatted.slice(1).replace('.', '');
 };
@@ -54,7 +55,7 @@ const getDayLabel = (dateString: string): string => {
 const DetailFilmPage = () => {
     const {filmId} = useParams<{ filmId: string }>()
     const [selectedDayDate, setSelectedDayDate] = useState<string>('')
-    const [selectedSeance, setSelectedSeance] = useState<Seance|null>(null)
+    const [selectedSeance, setSelectedSeance] = useState<Seance | null>(null)
 
     const navigate = useNavigate();
 
@@ -71,7 +72,6 @@ const DetailFilmPage = () => {
     const {data: film, isLoading: isFilmLoading, isError: isFilmError} = useQuery<Film>({
         queryKey: ["film", filmId],
         queryFn: () => fetchFilmDetail(filmId!),
-        staleTime: 1000 * 60 * 5,
         retry: 2,
         enabled: !!filmId,
         onError: (err) => {
@@ -84,7 +84,6 @@ const DetailFilmPage = () => {
     const {data: filmSchedule, isLoading: isScheduleLoading, isError: isScheduleError} = useQuery<FilmSchedule[]>({
         queryKey: ["filmSchedule", "filmSchedule"],
         queryFn: () => fetchFilmSchedule(filmId!),
-        staleTime: 1000 * 60 * 5,
         retry: 2,
         enabled: !!filmId,
         onError: (err) => {
@@ -102,11 +101,11 @@ const DetailFilmPage = () => {
                 organized[schedule.date] = schedule
             })
             setOrganizedSchedules(organized)
-            if (!selectedDayDate && Object.keys(organized).length > 0){
+            if (!selectedDayDate && Object.keys(organized).length > 0) {
                 const firstDayDate = Object.keys(organized).sort()[0]
                 setSelectedDayDate(firstDayDate)
             }
-        } else if (filmSchedule && filmSchedule.length === 0){
+        } else if (filmSchedule && filmSchedule.length === 0) {
             setOrganizedSchedules({})
             setSelectedDayDate('')
             setSelectedSeance(null)
@@ -138,9 +137,9 @@ const DetailFilmPage = () => {
     if (isFilmError || isScheduleError) {
         return (
             <>
-                <Header />
+                <Header/>
                 <div>
-                    <button onClick={() => navigate("/cinema/today")}></button>
+                    <button onClick={() => navigate(HOMEPAGE_PATH)}></button>
                 </div>
             </>
         )
@@ -149,21 +148,21 @@ const DetailFilmPage = () => {
     return (
         <>
             <Header/>
-            <div className={"button-back-container"}>
-                <ArrowBack />
-                <button onClick={() => navigate("/cinema/today")}>Назад</button>
+            <div className="button-back-container">
+                <ArrowBack/>
+                <button onClick={() => navigate(HOMEPAGE_PATH)}>Назад</button>
             </div>
-            <div className={"film-detail"}>
-                <div className={"image-container-detail"}>
+            <div className="film-detail">
+                <div className="image-container-detail">
                     <ImageLoader url={`https://shift-intensive.ru/api${film.img}`}></ImageLoader>
-                    <div className={"on-image"}>
+                    <div className="on-image">
                         <p>{film.genres[0]}</p>
                         <p>{film.country.name} {film.releaseDate.slice(film.releaseDate.length - 4, film.releaseDate.length)}</p>
                     </div>
                 </div>
                 <div>
-                    <h3 className={"film-title-detail"}>{film.name} ({ratingMap[film.ageRating]})</h3>
-                    <p className={"film-type-detail"}>Фильм</p>
+                    <h3 className="film-title-detail">{film.name} ({ratingMap[film.ageRating]})</h3>
+                    <p className="film-type-detail">Фильм</p>
                     <div>
                         {renderStars(film.userRatings.kinopoisk)}
                     </div>
@@ -171,21 +170,21 @@ const DetailFilmPage = () => {
                     <p>{film.description}</p>
                 </div>
             </div>
-            <div className={"schedule-section-header"}>
+            <div className="schedule-section-header">
                 <p>Расписание</p>
             </div>
             {daysForSeletor.length > 0 ? (
                 <>
                     <DaySelector
-                    days={daysForSeletor}
-                    selectedDayDate={selectedDayDate}
-                    onSelectDay={handleSelectDay}
+                        days={daysForSeletor}
+                        selectedDayDate={selectedDayDate}
+                        onSelectDay={handleSelectDay}
                     />
                     <FilmScheduleDay
                         daySeances={currentDaySeances}
                         selectedTimeSlot={selectedSeance?.time}
                         selectedHallName={selectedSeance?.hall.name}
-                        onSelectTime={handleSelectSeance} />
+                        onSelectTime={handleSelectSeance}/>
 
                 </>
             ) : (

@@ -14,7 +14,7 @@ interface DaySelectorProps {
 
 const DaySelector: React.FC<DaySelectorProps> = ({days, selectedDayDate, onSelectDay}) => {
     return (
-        <div className={"day-tabs"}>
+        <div className="day-tabs">
             {days.map((day) => (
                 <button key={day.date} onClick={() => onSelectDay(day.date)}
                         className={`day-tab ${selectedDayDate === day.date ? 'active' : ''}`}>{day.dayLabel}</button>

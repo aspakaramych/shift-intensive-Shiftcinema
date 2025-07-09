@@ -28,11 +28,11 @@ const FilmScheduleDay: React.FC<ScheduleDisplayProps> = ({
     })
 
     return (
-        <div className={"schedule-section"}>
+        <div className="schedule-section">
             {[...hallsMap.entries()].map(([hallName, seanceInHall]) => (
-                <div key={hallName} className={"hall-section"}>
+                <div key={hallName} className="hall-section">
                     <h4>{hallName}</h4>
-                    <div className={"time-slots"}>
+                    <div className="time-slots">
                         {seanceInHall.sort((a, b) => a.time.localeCompare(b.time)).map((seance) => (
                             <button key={seance.time + seance.hall.name}
                                     onClick={() => onSelectTime && onSelectTime(seance)}

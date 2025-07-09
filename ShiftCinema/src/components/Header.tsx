@@ -10,33 +10,33 @@ const Header = () => {
     const navigate = useNavigate();
     const id = localStorage.getItem("id");
     return (
-        <header className={"header"}>
-            <div className={"header-container"}>
-                <span onClick={() => navigate("/")} className={"logo-span"}>
+        <header className="header">
+            <div className="header-container">
+                <span onClick={() => navigate("/")} className="logo-span">
 
                     <div>
                         <p>Шифт</p>
                         <p>Cinema</p>
                     </div>
-                    <Logo />
+                    <Logo/>
                 </span>
-                <div className={"desktop-navigation"}>
-                    <span onClick={() => navigate(`/account/${id}`)} className={"desktop-navigation-span"}>
-                        <UserIcon />
+                <div className="desktop-navigation">
+                    <span onClick={() => navigate(`/account/${id}`)} className="desktop-navigation-span">
+                        <UserIcon/>
                         <p>Профиль</p>
                     </span>
-                    <span className={"desktop-navigation-span"}>
-                        <TicketIcon />
+                    <span className="desktop-navigation-span">
+                        <TicketIcon/>
                         <p>Билеты</p>
                     </span>
                 </div>
 
-                <span className={"desktop-navigation-span"}>
-                    <ExitIcon />
+                <span className="desktop-navigation-span">
+                    <ExitIcon/>
                     <p>Выйти</p>
                 </span>
-                <span className={"desktop-navigation-span"}>
-                    <SwitchMode />
+                <span className="desktop-navigation-span">
+                    <SwitchMode/>
                 </span>
             </div>
         </header>

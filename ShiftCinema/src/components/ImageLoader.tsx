@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import {useQuery} from "@tanstack/react-query";
 import {toast} from "react-toastify";
@@ -19,8 +18,6 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({url}) => {
     const {data, isLoading, isError} = useQuery({
         queryKey: ["image", url],
         queryFn: () => fetchImage(url),
-        staleTime: 1000 * 60 * 5,
-        cacheTime: 1000 * 60 * 30,
         retry: 2
     })
     if (isLoading) return <div>Загрузка изображения</div>
@@ -28,5 +25,5 @@ export const ImageLoader: React.FC<ImageLoaderProps> = ({url}) => {
         toast.error("Ошибка загрузки фото")
         return null
     }
-    return <img src={data} alt={"Загруженно"} />
+    return <img src={data} alt={"Загруженно"}/>
 }
